@@ -1,0 +1,5 @@
+/* jshint esversion: 6  */
+
+console.log('Imported module');
+
+export default 23;
