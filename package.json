@@ -1,0 +1,14 @@
+{
+  "name": "js_food_order_app",
+  "version": "1.0.0",
+  "description": "It's food ordering app using API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Md. Ayub Khan",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.19.1"
+  }
+}
