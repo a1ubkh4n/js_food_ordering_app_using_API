@@ -1,8 +1,10 @@
 /* jshint esversion: 6 */
 
 import Search from "./models/Search";
+import Recipe from "./models/Recipe";
 import * as searchView from "./views/searchView";
 import { elements, renderLoader, clearLoader } from "./views/base";
+
 /** Global state of the app
  * _ Search object
  * _ Current recipe object
@@ -10,6 +12,10 @@ import { elements, renderLoader, clearLoader } from "./views/base";
  * _ Liked recipes
  */
 const state = {};
+
+/*
+* Search Controller
+*/
 
 const controlSearch = async () => {
   // 1. Get the query from the view
@@ -38,9 +44,17 @@ elements.searchForm.addEventListener('submit', e => {
 elements.searchResPages.addEventListener('click', e => {
   const btn = e.target.closest('.btn-inline');
   if (btn) {
-    const goToPage = parseInt(btn.dataset.goto, 10);
+    const goToPage = parseInt(btn.dataset.goto, 10); // 10 means decimal
     console.log(goToPage);
     searchView.clearResults();
     searchView.renderResults(state.search.result, goToPage); 
   }
 });
+
+
+/*
+*** Recipe Controller
+*/
+const r = new Recipe(47746);
+r.getRecipe();
+console.log(r);
