@@ -19,6 +19,7 @@ const state = {};
 const controlSearch = async () => {
   // 1. Get the query from the view
   const query = searchView.getInput(); //TODO
+ // const query = 'pizza'; //TODO
 
   if (query) {
     // 2. New search object and add to state
@@ -35,6 +36,7 @@ const controlSearch = async () => {
       searchView.renderResults(state.search.result); 
     } catch (error) {
       alert('Something wrong with the search..!');
+      console.log(error);
     }   
   }
 };
@@ -43,6 +45,12 @@ elements.searchForm.addEventListener('submit', e => {
   e.preventDefault();
   controlSearch();
 });
+
+  // // TESting
+  // window.addEventListener('load', e => {
+  //   e.preventDefault();
+  //   controlSearch();
+  // });
 
 elements.searchResPages.addEventListener('click', e => {
   const btn = e.target.closest('.btn-inline');
@@ -68,16 +76,23 @@ const controlRecipe = async () => {
 
     // Create new recipe object
     state.recipe = new Recipe(id);
+
+    // // Testing
+    // window.m = state.recipe;
+
     try {
       // Get recipe data 
       await state.recipe.getRecipe();
+      state.recipe.parseIngredients();
+
       // Calculate servings and time
       state.recipe.calcTime();
       state.recipe.calcServings();
+      
       // Render recipe
       console.log(state.recipe);
     } catch (error) {
-      alert('Error processing recipe!');
+      alert('Error processing recipe..!');
     }
   }
 };
