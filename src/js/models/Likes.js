@@ -5,14 +5,14 @@ export default class Likes {
     this.likes = [];
   }
 
-  addLikes(id, title, author, img) {
+  addLike(id, title, author, img) {
     const like = { id, title, author, img };
     this.likes.push(like);
     return like;
   }
 
-  deleteLikes(id) {
-    this.index = this.likes.findIndex(el => el.id === id);
+  deleteLike(id) {
+    const index = this.likes.findIndex(el => el.id === id);
     this.likes.splice(index, 1);
   }
 
