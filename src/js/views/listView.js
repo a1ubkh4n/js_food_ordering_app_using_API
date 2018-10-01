@@ -10,7 +10,7 @@ export const renderItem = (item) => {
   const markup = `
   <li class="shopping__item" data-item_id=${item.id}>
     <div class="shopping__count">
-      <input type="number" min="0.1" value="${item.count}" step="${item.count}" class="shopping__count-value">
+      <input type="number" min="0" value="${item.count}" step="${item.count}" class="shopping__count-value">
       <p>${item.unit}</p>
     </div>
     <p class="shopping__description">${item.ingredient}</p>
