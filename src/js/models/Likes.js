@@ -1,5 +1,4 @@
 /* jshint esversion: 6 */
-
 export default class Likes {
   constructor() {
     this.likes = [];

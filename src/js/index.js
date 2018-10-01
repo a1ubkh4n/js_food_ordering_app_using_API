@@ -1,5 +1,4 @@
 /* jshint esversion: 6 */
-
 import Search from "./models/Search";
 import Recipe from "./models/Recipe";
 import List from "./models/List";
@@ -17,7 +16,6 @@ import { elements, renderLoader, clearLoader } from "./views/base";
  * _ Liked recipes
  */
 const state = {};
-window.s = state;
 /*
 * SEARCH CONTROLLER
 */
@@ -71,25 +69,20 @@ const controlRecipe = async () => {
   if (id) {
     // Prepare UI for 
     recipeView.clearRecipe();
-    renderLoader(elements.recipe);
-    
+    renderLoader(elements.recipe);  
     // Highlight selected search item
     if (state.search) {
       searchView.highlightSelected(id);
     }
-
     // Create new recipe object
     state.recipe = new Recipe(id);
-
     try {
       // Get recipe data 
       await state.recipe.getRecipe();
       state.recipe.parseIngredients();
-
       // Calculate servings and time
       state.recipe.calcTime();
       state.recipe.calcServings();
-
       // Render recipe
       clearLoader();
       recipeView.renderRecipe(
@@ -102,15 +95,12 @@ const controlRecipe = async () => {
     }
   }
 };
-// window.addEventListener('hashchange', controlRecipe);
-// window.addEventListener('load', controlRecipe);
-
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
 
 /*
 *** LIST CONTROLLER
 */
-
 const controlList = () => {
   // Create a new list if there is none yet
   if(!state.list) {
@@ -123,7 +113,6 @@ const controlList = () => {
     listView.renderItem(items);
   });
 };
-
 // Handle delete and update list item events
 elements.shopping.addEventListener('click', e => {
   
@@ -143,10 +132,10 @@ elements.shopping.addEventListener('click', e => {
   }
 });
 
+
 /*
 *** LIKE CONTROLLER
 */
-
 const controlLike = () => {
   if(!state.likes) {
     state.likes = new Likes();
