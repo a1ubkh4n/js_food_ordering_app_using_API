@@ -2,11 +2,15 @@
 
 import { elements } from './base';
 
+export const clearItem = () => {
+  elements.shopping.innerHTML = "";
+};
+
 export const renderItem = (item) => {
   const markup = `
   <li class="shopping__item" data-item_id=${item.id}>
     <div class="shopping__count">
-      <input type="number" value="${item.count}" step="${item.count}" class="shopping__count-value">
+      <input type="number" min="0.1" value="${item.count}" step="${item.count}" class="shopping__count-value">
       <p>${item.unit}</p>
     </div>
     <p class="shopping__description">${item.ingredient}</p>
@@ -23,5 +27,7 @@ export const renderItem = (item) => {
 
 export const deleteItem = (id) => {
   const item =document.querySelector(`[data-item_id="${id}"]`);
-  item.parentElement.removeChild(item);
+  if(item) {
+    item.parentElement.removeChild(item);
+  }
 };
